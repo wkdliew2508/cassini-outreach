@@ -4,7 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    raise ValueError("OPENAI_API_KEY not set in environment or .env file")
+
+client = OpenAI(api_key=api_key)
 
 def generate_outreach_message(prompt, memory=None):
     messages = memory or []
