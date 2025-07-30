@@ -16,8 +16,7 @@ def generate_outreach_message(prompt, memory=None):
     messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-        #model="gpt-4",
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo", #change from "gpt-4"
         messages=messages,
         temperature=0.7
     )
